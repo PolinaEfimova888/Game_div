@@ -6,8 +6,6 @@ function love.load()
 	height = love.graphics.getHeight()
 	love.graphics.setBackgroundColor(128/255,128/255,128/255)
 
-
-
 	location = Vector:create(100,height/2)
 
 	velocity = Vector:create(0,0)
@@ -40,7 +38,7 @@ function love.update()
 --			wmover:applyForce(friction)
 --		end
 
-	if mover.location.x + mover.size < width/2 then 
+	if mover.location.x + mover.size > 180 and mover.location.x + mover.size < 220 then 
         friction = (mover.velocity  * -1):norm()
         if friction then 
             friction:mul(0.005)
@@ -48,7 +46,7 @@ function love.update()
         end
     end 
 
-    if wmover.location.x + wmover.size > width/2 then 
+    if wmover.location.x + wmover.size > 580 and wmover.location.y + wmover.size < 100 then 
         friction = (wmover.velocity  * -1):norm()
         if friction then 
             friction:mul(-0,005)
@@ -68,7 +66,10 @@ function love.draw()
 	
 	local r, g, b, a = love.graphics.getColor()
 	love.graphics.setColor(0, 119/255, 190/255, 0.5)
-	love.graphics.rectangle("fill", 0, 0, 400, 600)
+	love.graphics.rectangle("fill", 180, 0, 40, 600)
+
+	love.graphics.setColor(206, 169/255, 249/255, 0.5)
+	love.graphics.rectangle("fill", 580, 0, 300, 500)
 	love.graphics.setColor(r, g, b, a)
 
 
